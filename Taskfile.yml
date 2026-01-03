@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+
+tasks:
+  init:
+    desc: Initialize the solution (use on a fresh checkout)
+    cmds:
+      - dotnet tool restore
+
+  test:
+    desc: Test the solution and generate a report
+    cmds:
+      - dotnet test
+      - dotnet test
+          --coverage
+          --coverage-output-format cobertura
+          --coverage-output coverage.cobertura.xml
+      - dotnet reportgenerator
+          -reports:tests/**/TestResults/coverage.cobertura.xml
+          -targetdir:CoverageReport
