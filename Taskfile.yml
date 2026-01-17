@@ -10,10 +10,15 @@ tasks:
     cmds:
       - dotnet tool restore
 
+  publish:
+    - dotnet restore
+    - dotnet build --no-restore --configuration Release
+    - dotnet test --no-build --configuration Release --verbosity normal
+    - dotnet pack --no-build --configuration Release --output ${{ env.NuGetDirectory }}
+
   test:
     desc: Test the solution and generate a report
     cmds:
-      - dotnet test
       - dotnet test
           --coverage
           --coverage-output-format cobertura

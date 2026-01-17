@@ -6,10 +6,10 @@
         <Copyright>Copyright (c) John Susi 2026</Copyright>
         <Description>A lightweight .NET library that provides Universally Unique IDentifiers as
             specified in RFC 9562</Description>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <PackageProjectUrl>rocksolidorg/uuid-dotnet</PackageProjectUrl>
+        <PackageLicenseExpressions>MIT</PackageLicenseExpressions>
+        <PackageProjectUrl>https://github.com/rocksolidorg/uuid-dotnet</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>UUID</PackageTags>
+        <PackageTags>GUID UUID UUIDv1 UUIDv3 UUIDv4 UUIDv5 UUIDv6 UUIDv7 UUIDv8</PackageTags>
         <EnablePackageValidation>true</EnablePackageValidation>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>

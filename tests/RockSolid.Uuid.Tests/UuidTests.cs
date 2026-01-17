@@ -1,12 +1,9 @@
 namespace RockSolid.Uuid.Tests;
 
 using RockSolid.Uuid;
-using System.Buffers.Binary;
 using System.Linq;
-using System.Net.NetworkInformation;
 
-
-public class UnitTest1
+public class UuidTests
 {
 
 
@@ -174,6 +171,30 @@ public class UnitTest1
     {
         var expected = Guid.Parse("FFFFFFFF-FFFF-7FFF-BFFF-FFFFFFFFFFFF");
         var actual = Uuid.CreateV7((1L << 48) - 1, 0x3FFF, 0xFFFFFFFFFFFFFFFF);
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TestV8()
+    {
+        var expected = Guid.Parse("2489E9AD-2EE2-8E00-8EC9-32D5F69181C0");
+        var actual = Uuid.CreateV8(0x2489E9AD2EE2, 0xE00, 0xEC932D5F69181C0);
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TestV8Buffer()
+    {
+        var expected = Guid.Parse("919108f7-52d1-8320-9bac-f847db4148a8");
+        var actual = Uuid.CreateV8([0x91, 0x91, 0x08, 0xF7, 0x52, 0xD1, 0x33, 0x20, 0x5B, 0xAC, 0xF8, 0x47, 0xDB, 0x41, 0x48, 0xA8]);
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TestV8NameBased()
+    {
+        var expected = Guid.Parse("5c146b14-3c52-8afd-938a-375d0df1fbf6");
+        var actual = Uuid.CreateV8(Uuid.DNS, "www.example.com"u8);
         Assert.Equal(expected, actual);
     }
 
